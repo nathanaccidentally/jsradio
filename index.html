@@ -53,14 +53,12 @@
 			var mmt = moment();
 			var mmtMidnight = mmt.clone().startOf('day'); // get midnight time
 			var diffSeconds = mmt.diff(mmtMidnight, 'seconds');
-			var radioSrc = "";
+			var radioSrc = "gtalossantos.mp3";
 
 			if (diffSeconds < 43200) {
-				radioSrc = "ricflair.mp3";
 				console.log("loading radio1");
 			} else {
-				diffSeconds = diffSeconds / 2;
-				radioSrc = "ricflair.mp3";
+				window.diffSeconds = diffSeconds - 43200;
 				console.log("loading radio2");
 			}
 
@@ -84,13 +82,13 @@
 
 			function startRadio() {
 				var radio = new Howl({
-					src: ['ricflair.mp3']
+					src: [radioSrc]
 				}); 
 
 				// once the radio file is loaded, play it with howler.
 
 				radio.once('load', function() {
-					radio.seek(10)
+					radio.seek(diffSeconds)
 					radio.play();
 
 					document.getElementById("text2").innerHTML = "now playing: " + radioSrc;
@@ -120,7 +118,7 @@
 		</div>
 
 		<div class="div5" id="div5">
-			<a href="https://github.com/nathanaccidentally">github</a>
+			<a href="https://github.com/nathanaccidentally/jsradio">github</a>
 			<a href="#" onclick="Howler.unload()">unload cache</a>
 		</div>
 	</body>
