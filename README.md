@@ -1,8 +1,7 @@
-# jsradio
-An online radio using moment.js and howler.js.
+# JSRadio
+A time-based synchronized online radio project that doesn't require external servers or a connection between different devices. JSRadio uses moment.js and howler.js to sync an audio file between different devices down to the second to give the impression that the audio is being brodcasted live.
 
-jsradio uses moment.js to get the seconds since midnight so audio can be synced across devices giving the impression that it's live. howler.js is used for handling audio files for compatibilty and performance reasons.
+## How it works
+JSRadio works by seperating the times of day into four 6 hour chunks, with one radio file being played during each one of these chunks. It uses moment.js to get the time since midnight in seconds and seeks the audio at the specific spot based on the devices time.
 
-the files are pretty large for the radio but i tried to make it work as well as I could. sometimes the files cause the browser to crash or just dont work at all.
-
-I think this is pretty cool and has several practical uses. People can use this however they want because this project is pretty cool and barebones.
+If it doesn't make sense, it will when you look at the code and mess around with it. I think it's pretty cool.
